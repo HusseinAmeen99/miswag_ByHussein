@@ -18,6 +18,7 @@ class ProductItem extends StatelessWidget {
   final String ratecount;
   void Function()? onTap;
   final Widget icon;
+  final int count=1;
   @override
   Widget build(BuildContext context) {
     return Card(

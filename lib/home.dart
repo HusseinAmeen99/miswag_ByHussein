@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project2_fitch_sonic/product_item.dart';
 
+import 'ModalBottomSheet.dart';
 import 'model.dart';
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -48,6 +49,7 @@ void toggleSelection (ProductModel product){
   );
 }
 bool isSelected (ProductModel product) => basketList.contains(product);
+
 @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,10 +192,62 @@ bool isSelected (ProductModel product) => basketList.contains(product);
                         color: Colors.white,
                       ),
                       SizedBox(width: 10,),
-                      Text('View Basket',style: TextStyle(color: Colors.white,fontSize: 16),),
+                      GestureDetector(
+                        onTap: (){
+                          showModalBottomSheet(context: context,
+                             // isScrollControlled: true,
+                              builder: (context) {
+                            if(basketList.isEmpty)
+                              {return  Center(child: Text('Empty'),);}
+                            else
+                                {return Column(
+                                  children: [
+                                    Expanded(
+                                      child: ListView.builder(
+                                          itemCount: basketList.length,
+                                          itemBuilder: (context, index) {
+                                            return ListTile(
+                                                leading: Image.asset(basketList[index].image,width: 70,height: 70,),
+                                                title: Text(basketList[index].name),
+                                                subtitle: Text(basketList[index].price),
+                                                trailing: Row(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    Icon(Icons.remove),
+                                                    SizedBox(width: 3,),
+                                                    Text('1',style: TextStyle(fontSize: 18),),
+                                                    SizedBox(width: 3,),
+                                                    Icon(Icons.add),
+                                                  ],
+                                                ),
+                                            );
+
+                                          }
+                                          ,),
+                                    ),
+                                    Container(
+                                      child: Text('Go to the cart',style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
+                                      padding: EdgeInsets.only(left: 45,top: 12),
+                                      width: 200,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                          color: Colors.green,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                    SizedBox(height: 15,),
+
+                                  ],
+                                );
+                                }
+                              },
+
+                          );
+                        },
+                          child: Text('View Basket',style: TextStyle(color: Colors.white,fontSize: 16),)),
                       SizedBox(width: 5,),
                       Badge(
-                          label: Text(basketList.length.toString()), 
+                          label: Text(basketList.length.toString()),
                           child: SvgPicture.asset('assets/icons/basket.svg',color: Colors.white,)),
                       SizedBox(width: 15,),
                     ],
