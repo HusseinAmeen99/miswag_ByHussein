@@ -6,6 +6,8 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
+      leading: SizedBox.shrink(),
+      leadingWidth: 0,
       title: Text('Search'),
     ),);
   }
