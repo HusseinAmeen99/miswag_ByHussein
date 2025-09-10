@@ -7,6 +7,8 @@ class Favourite extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: SizedBox.shrink(),
+        leadingWidth: 0,
         title: Text('Favourites'),
       ),
     );
