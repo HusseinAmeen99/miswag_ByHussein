@@ -1,10 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project2_fitch_sonic/favourite.dart';
+import 'package:project2_fitch_sonic/menu.dart';
 import 'package:project2_fitch_sonic/product_item.dart';
+import 'package:project2_fitch_sonic/profile.dart';
+import 'package:project2_fitch_sonic/search.dart';
 
 import 'ModalBottomSheet.dart';
 import 'model.dart';
+
+
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -198,7 +205,7 @@ bool isSelected (ProductModel product) => basketList.contains(product);
                              // isScrollControlled: true,
                               builder: (context) {
                             if(basketList.isEmpty)
-                              {return  Center(child: Text('Empty'),);}
+                              {return  Center(child: Text('Empty',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),);}
                             else
                                 {return Column(
                                   children: [
@@ -254,6 +261,7 @@ bool isSelected (ProductModel product) => basketList.contains(product);
                   ),
               ),
               ),
+
             ],
           ),
       ),

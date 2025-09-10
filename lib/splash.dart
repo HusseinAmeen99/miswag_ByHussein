@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project2_fitch_sonic/home.dart';
+
+import 'mainpage.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -14,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     Future.delayed(Duration(seconds: 2), ()
     {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(),));
     }
     );
     super.initState();
